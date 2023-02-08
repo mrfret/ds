@@ -19,8 +19,8 @@ function log() {
    echo "[INSTALL] DS ${1}"
 }
 
-remove=(/bin/dockserver /usr/bin/dockserver)
-log "**** remove old dockserver bins ****" && \
+remove=(/bin/ds /usr/bin/ds)
+log "**** remove old ds bins ****" && \
 sudo $(command -v rm) -rf $remove 1>/dev/null 2>&1 && clear
 unset remove
 
