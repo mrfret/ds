@@ -30,12 +30,12 @@ git clone https://github.com/mrfret/ds.git /opt/ds 1>/dev/null 2>&1
 if [[ $EUID != 0 ]]; then
     $(which chown) -R $(whoami):$(whoami) /opt/ds
     $(which usermod) -aG sudo $(whoami)
-    cp /opt/ds/apps.sh /apps.sh
+    cp /opt/ds/apps.sh /
     chmod +x /apps.sh
     $(which chown) $(whoami):$(whoami) /apps.sh
 else 
     $(which chown) -R 1000:1000 /opt/ds
-    cp /opt/ds/apps.sh /apps.sh
+    cp /opt/ds/apps.sh /
     chmod +x /apps.sh
 	chmod +x /opt/ds/*.sh
     $(which chown) -R 1000:1000 /apps.sh
