@@ -15,10 +15,19 @@ printf "
 exit 0
 fi
 
+function log() {
+   echo "[INSTALL] DS ${1}"
+}
+
 [[ ! -d "/opt/ds" ]] && mkdir -p /opt/ds
-git clone https://github.com/mrfret/ds.git /opt/ds 1>/dev/null 2>&1
+
+file=/opt/ds/ds
+store=/usr/bin/ds
 ds=/opt/ds
 
+git clone https://github.com/mrfret/ds.git /opt/ds 1>/dev/null 2>&1
+
+if test -f "/usr/bin/dockserver"; then $(which rm) /usr/bin/dockserver ; fi
 if [[ $EUID != 0 ]]; then
     $(which chown) -R $(whoami):$(whoami) /opt/ds
     $(which usermod) -aG sudo $(whoami)

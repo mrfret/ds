@@ -3,7 +3,5 @@
 
  
 ```
-
-sudo wget -qO- https://raw.githubusercontent.com/mrfret/ds/install.sh | sudo bash
-
+sudo wget -qO- https://raw.githubusercontent.com/mrfret/ds/latest/install.sh | sudo bash
 ```
