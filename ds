@@ -1,0 +1,31 @@
+#!/bin/bash
+####################################
+# All rights reserved.              #
+# started from Zero                 #
+# Docker owned dockserver           #
+# Docker Maintainer dockserver      #
+#####################################
+#####################################
+# THE DOCKER ARE UNDER LICENSE      #
+# NO CUSTOMIZING IS ALLOWED         #
+# NO REBRANDING IS ALLOWED          #
+# NO CODE MIRRORING IS ALLOWED      #
+#####################################
+# shellcheck disable=SC2086
+# shellcheck disable=SC2006
+if [[ $EUID != 0 ]]; then
+    sudo "$0" "$@"
+    exit $?
+fi
+ds=/opt/ds
+run() {
+if [[ -d ${ds} ]];then
+   $(command -v cd) ${ds} && $(command -v bash) apps.sh
+else
+   usage
+fi
+}
+###
+
+
+#E-o-F#
