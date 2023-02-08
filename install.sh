@@ -25,12 +25,14 @@ if [[ $EUID != 0 ]]; then
     cp /opt/ds/ds /usr/bin/ds
     ln -sf /usr/bin/ds /bin/ds
     chmod +x /usr/bin/ds
+	chmod +x /opt/ds/*.sh
     $(which chown) $(whoami):$(whoami) /usr/bin/ds 
 else 
     $(which chown) -R 1000:1000 /opt/ds
     cp /opt/ds/ds /usr/bin/ds
     ln -sf /usr/bin/ds /bin/ds
     chmod +x /usr/bin/ds
+	chmod +x /opt/ds/*.sh
     $(which chown) -R 1000:1000 /usr/bin/ds
 fi
 
