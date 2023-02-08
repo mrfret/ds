@@ -19,11 +19,6 @@ function log() {
    echo "[INSTALL] DS ${1}"
 }
 
-remove=(/bin/ds /usr/bin/ds)
-log "**** remove old ds bins ****" && \
-sudo $(command -v rm) -rf $remove 1>/dev/null 2>&1 && clear
-unset remove
-
 [[ ! -d "/opt/ds" ]] && mkdir -p /opt/ds
 
 file=/opt/ds/ds
@@ -36,28 +31,15 @@ if test -f "/usr/bin/ds"; then $(which rm) /usr/bin/ds ; fi
 if [[ $EUID != 0 ]]; then
     $(which chown) -R $(whoami):$(whoami) /opt/ds
     $(which usermod) -aG sudo $(whoami)
-    cp /opt/ds/ds /usr/bin/ds
-    ln -sf /usr/bin/ds /bin/ds
-    chmod +x /usr/bin/ds
-	chmod +x /opt/ds/*.sh
-    $(which chown) $(whoami):$(whoami) /usr/bin/ds 
+    cp /opt/ds/apps.sh ./apps.sh
+    chmod +x ~./apps.sh
+    $(which chown) $(whoami):$(whoami) ~./apps.sh
 else 
     $(which chown) -R 1000:1000 /opt/ds
-    cp /opt/ds/ds /usr/bin/ds
-    ln -sf /usr/bin/ds /bin/ds
-    chmod +x /usr/bin/ds
+    cp /opt/ds/apps.sh ./apps.sh
+    chmod +x ./apps.sh
 	chmod +x /opt/ds/*.sh
-    $(which chown) -R 1000:1000 /usr/bin/ds
+    $(which chown) -R 1000:1000 ./apps.sh
 fi
 
-printf "
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-    🚀    DS
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-
-     run ds
-     [ sudo ] ds
-
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-" 
 #EOF#
