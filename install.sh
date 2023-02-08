@@ -27,7 +27,7 @@ ds=/opt/ds
 
 git clone https://github.com/mrfret/ds.git /opt/ds 1>/dev/null 2>&1
 
-if test -f "/usr/bin/dockserver"; then $(which rm) /usr/bin/dockserver ; fi
+if test -f "/usr/bin/ds"; then $(which rm) /usr/bin/ds ; fi
 if [[ $EUID != 0 ]]; then
     $(which chown) -R $(whoami):$(whoami) /opt/ds
     $(which usermod) -aG sudo $(whoami)
